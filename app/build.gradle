@@ -1,0 +1,151 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'com.jakewharton.butterknife'
+
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        applicationId "com.lazy.gank"
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        versionCode 1
+        versionName "1.0"
+
+        // Enabling multidex support.
+        multiDexEnabled false
+    }
+
+    //配置签名文件
+    signingConfigs {
+        myConfig {
+            //绝对路径和相对路径都可以
+            storeFile file("lazy.jks")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+        }
+    }
+
+    //下面的代码开始打批量包
+    productFlavors {
+        // Define separate dev and prod product flavors.
+        dev {
+            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
+            // to pre-dex each module and produce an APK that can be tested on
+            // Android Lollipop without time consuming dex merging processes.
+            minSdkVersion 21
+        }
+        prod {
+            // The actual minSdkVersion for the application.
+            minSdkVersion 14
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //改文件名
+    applicationVariants.all { variant ->
+
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName =  "Gank_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                //def fileName = outputFile.name.replace(".apk", "-gra${defaultConfig.versionName}.apk")
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+
+    compile project(':mylibrary')
+    compile project(':GithubWidget:InfiniteIndicatorLibrary')
+
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //https://github.com/CymChad/BaseRecyclerViewAdapterHelper/wiki/old_doc-cn
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
+    compile 'com.jude:fitsystemwindowlayout:2.1.5'
+    compile 'com.github.chrisbanes:PhotoView:1.3.0'
+
+//    compile 'com.lazy.logging:library:0.0.1'
+
+}
+//afterEvaluate {
+//    tasks.matching {
+//        it.name.startsWith('dex')
+//    }.each { dx ->
+//        if (dx.additionalParameters == null) {
+//            dx.additionalParameters = []
+//        }
+//        dx.additionalParameters += '--multi-dex'
+//        // 设置multidex.keep文件中class为第一个dex文件中包含的class，如果没有下一项设置此项无作用
+//        dx.additionalParameters += "--main-dex-list=$projectDir/multidex.keep".toString()
+//        //此项添加后第一个classes.dex文件只能包含-main-dex-list列表中class
+//        dx.additionalParameters += '--minimal-main-dex'
+//    }
+//}
+
+dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+
+    def supportDependencies = rootProject.ext.supportDependencies
+    def networkDependencies = rootProject.ext.networkDependencies
+    def libsDependencies = rootProject.ext.libsDependencies
+    def imgDependencies = rootProject.ext.imgDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+
+    //
+    compile supportDependencies.appcompat
+    compile supportDependencies.design
+    compile supportDependencies.cardview
+    //network dependencies
+    compile networkDependencies.retrofit2
+
+    compile libsDependencies.butterKnife
+    apt libsDependencies.butterKnifeCompiler
+
+    compile imgDependencies.fresco
+    compile imgDependencies.frescoGIF
+
+    compile libsDependencies.rxJava
+    compile libsDependencies.rxAndroid
+
+    apt libsDependencies.daggerCompiler
+    compile libsDependencies.dagger
+
+    compile libsDependencies.googleGson
+    compile libsDependencies.rxJavaConverterGson
+    compile libsDependencies.rxJavaAdapter
+    compile libsDependencies.rxJavaConverterScalars
+    //JSR provided no include
+    provided libsDependencies.javaxAnnotation
+
+    //Json
+//    apt libsDependencies.logansquareCompiler
+//    compile libsDependencies.logansquare
+
+    testCompile dataTestDependencies.mockito
+
+}

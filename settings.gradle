@@ -1,0 +1,8 @@
+//
+include ':app'
+
+include ':mylibrary'
+
+include 'GithubWidget:InfiniteIndicatorLibrary'
+
+rootProject.name = 'gank-examples'

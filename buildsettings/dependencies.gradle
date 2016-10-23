@@ -1,0 +1,125 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+//全局配置
+ext {
+    //Android
+    androidBuildToolsVersion = "24.0.1"
+    androidMinSdkVersion = 14
+    androidTargetSdkVersion = 24
+    androidCompileSdkVersion = 24
+
+    //support
+    //统一support版本 当然你也可以
+    supportVersion = '24.1.1'
+
+    //network Libraries
+
+    //retrofit @see https://github.com/square/retrofit
+    retrofit2Version = '2.1.0'
+    okHttpVersion = '2.5.0'
+
+    //json Libraries
+    gsonVersion = '2.7'
+    logansquareVersion = '1.3.6'
+
+    //os(open source) Libraries
+    //TODO insert latest version
+    //butterknife @see https://github.com/JakeWharton/butterknife
+
+    butterknifeVersion = '8.2.1'
+    //Fresco @see http://www.fresco-cn.org/docs/getting-started.html
+    frescoVersion = '0.12.0'
+
+    //Libraries
+    //-----------------------------------------------------------
+    //rxJava @see https://github.com/ReactiveX/RxJava
+    rxJavaVersion = '1.1.9'
+
+    //RxAndroid @see https://github.com/ReactiveX/RxAndroid/
+    rxAndroidVersion = '1.2.1'
+
+    //rx plugin
+    rxConverterGsonVersion = "2.0.2"
+    rxConverterScalarsVersion = "2.0.0"
+    rxAdapterVersion = "2.0.2"
+
+
+
+    daggerVersion = '2.0.2'
+    recyclerViewVersion = '21.0.3'
+
+    javaxAnnotationVersion = '1.0'
+
+    //Testing
+    robolectricVersion = '3.0'
+    jUnitVersion = '4.12'
+    assertJVersion = '1.7.1'
+    mockitoVersion = '1.9.5'
+    dexmakerVersion = '1.0'
+    espressoVersion = '2.0'
+    testingSupportLibVersion = '0.1'
+
+    //Development
+    leakCanaryVersion = '1.3.1'
+
+    supportDependencies = [
+            appcompat   : "com.android.support:appcompat-v7:${supportVersion}",
+            design      : "com.android.support:design:${supportVersion}",
+            annotations : "com.android.support:support-annotations:${supportVersion}",
+            recyclerView: "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            cardview    : "com.android.support:cardview-v7:${supportVersion}",
+    ]
+
+    networkDependencies = [
+            retrofit2: "com.squareup.retrofit2:retrofit:${retrofit2Version}"
+    ]
+
+    imgDependencies = [
+            fresco            : "com.facebook.fresco:fresco:${frescoVersion}",
+            // 在 API < 14 上的机器支持 WebP 时，需要添加
+            frescoWebPLow     : "com.facebook.fresco:animated-base-support:${frescoVersion}",
+            // 支持 GIF 动图，需要添加
+            frescoGIF         : "com.facebook.fresco:animated-gif:${frescoVersion}",
+            // 支持 WebP （静态图+动图），需要添加
+            frescoWebP        : "com.facebook.fresco:webp:${frescoVersion}",
+            frescoWebPAnimated: "com.facebook.fresco:webpsupport:${frescoVersion}",
+            // 仅支持 WebP 静态图，只需要添加 frescoWebPAnimated
+
+    ]
+
+    //common Libs
+    libsDependencies = [
+            butterKnife           : "com.jakewharton:butterknife:${butterknifeVersion}",
+            butterKnifeCompiler   : "com.jakewharton:butterknife-compiler:${butterknifeVersion}",
+            rxJava                : "io.reactivex:rxjava:${rxJavaVersion}",
+            rxAndroid             : "io.reactivex:rxandroid:${rxAndroidVersion}",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger                : "com.google.dagger:dagger:${daggerVersion}",
+            logansquare           : "com.bluelinelabs:logansquare:${logansquareVersion}",
+            logansquareCompiler   : "com.bluelinelabs:logansquare-compiler:${logansquareVersion}",
+
+            javaxAnnotation       : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+
+            googleGson            : "com.google.code.gson:gson:${gsonVersion}",
+            rxJavaConverterGson   : "com.squareup.retrofit2:converter-gson:${rxConverterGsonVersion}",
+            rxJavaAdapter         : "com.squareup.retrofit2:adapter-rxjava:${rxAdapterVersion}",
+            rxJavaConverterScalars: "com.squareup.retrofit2:converter-scalars:${rxConverterScalarsVersion}",
+
+    ]
+
+    dataTestDependencies = [
+            junit      : "junit:junit:${jUnitVersion}",
+            assertj    : "org.assertj:assertj-core:${assertJVersion}",
+            mockito    : "org.mockito:mockito-core:${mockitoVersion}",
+            robolectric: "org.robolectric:robolectric:${robolectricVersion}",
+    ]
+
+    developmentDependencies = [
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+    ]
+}

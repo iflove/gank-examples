@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="titile_tabs">
+        <item>@string/title_all</item>
+        <item>@string/title_recommend</item>
+        <item>@string/title_fuli</item>
+        <item>@string/title_android</item>
+        <item>@string/title_ios</item>
+        <item>@string/title_video</item>
+        <item>@string/title_resource</item>
+        <item>@string/title_html</item>
+    </string-array>
+
+    <string-array name="settings">
+        <item>@string/setting_open_soure</item>
+        <item>@string/setting_clean_cache</item>
+    </string-array>
+</resources>

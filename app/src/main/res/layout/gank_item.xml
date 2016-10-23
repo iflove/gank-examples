@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/gank_who"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="13dp"
+        android:text="简书日报"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/publishedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/gank_who"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/gank_who"
+        android:textSize="14sp"
+        android:text="03:57:48"
+        android:textColor="@android:color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/gank_who"
+        android:layout_below="@+id/gank_who"
+        android:layout_marginTop="13dp"
+        android:maxLines="2"
+        android:maxWidth="200dp"
+        android:paddingBottom="10dp"
+        android:text="简书晚报160917——《乔任梁的死亡，我们看出了什么？》"
+        android:ellipsize="end"
+        android:textSize="17sp"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/ic_mask"
+        />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/desc"
+        android:layout_below="@id/desc"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/label_back"
+        android:paddingBottom="4dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:paddingTop="4dp"
+        android:text="android"
+        android:textColor="@android:color/holo_red_light"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,6 @@
+
+
+//某些公用脚本代码
+ def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}

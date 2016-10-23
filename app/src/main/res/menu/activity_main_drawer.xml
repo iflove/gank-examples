@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all"
+            android:title="@string/title_all"/>
+        <item
+            android:id="@+id/nav_recommend"
+            android:title="@string/title_recommend"/>
+
+        <item
+            android:id="@+id/nav_fuli"
+            android:title="@string/title_fuli"/>
+        <item
+            android:id="@+id/nav_android"
+            android:title="@string/title_android"/>
+        <item
+            android:id="@+id/nav_ios"
+            android:title="@string/title_ios"/>
+
+        <item
+            android:id="@+id/nav_video"
+            android:title="@string/title_video"/>
+        <item
+            android:id="@+id/nav_resource"
+            android:title="@string/title_resource"/>
+
+        <item
+            android:id="@+id/nav_html"
+            android:title="@string/title_html"/>
+    </group>
+
+    <item
+        android:title="Configuration"
+        android:id="@+id/configuration">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share"/>
+            <!--   <item
+                   android:id="@+id/nav_send"
+                   android:icon="@drawable/ic_menu_send"
+                   android:title="Send"/>-->
+            <item
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Tools"/>
+        </menu>
+    </item>
+
+</menu>

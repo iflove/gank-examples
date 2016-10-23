@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jude.fitsystemwindowlayout.FitSystemWindowsRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                               xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                               xmlns:tools="http://schemas.android.com/tools"
+                                                               android:layout_width="match_parent"
+                                                               android:layout_height="match_parent"
+                                                               app:padding_status="false"
+                                                               tools:context="com.lazy.gank.splash.SplashActivity">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/splash_default"
+        android:layout_width="293dp"
+        android:layout_height="235dp"
+        android:layout_centerInParent="true"
+        />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/splash_copy"
+        android:layout_width="164dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_10"
+        />
+</com.jude.fitsystemwindowlayout.FitSystemWindowsRelativeLayout>
